@@ -41,8 +41,8 @@ services:
       - db_root_password
 secrets:
   db_password:
-    file: ./secrets/db_password.txt
+    external: true
   db_root_password:
-    file: ./secrets/db_root_password.txt
+    external: true
 volumes:
   db_data: {}
