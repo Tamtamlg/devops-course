@@ -165,41 +165,11 @@ aws ec2 associate-route-table --route-table-id rtb-0c5ed9a30217e2ad4 --subnet-id
 
 # Task 2
 ```bash
-aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-012c361d82376f53c" "Name=tag:Name,Values=private"
+aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-012c361d82376f53c" "Name=tag:Name,Values=private" --query "Subnets[*].CidrBlock"
 
-{
-    "Subnets": [
-        {
-            "AvailabilityZone": "eu-west-2c",
-            "AvailabilityZoneId": "euw2-az1",
-            "AvailableIpAddressCount": 251,
-            "CidrBlock": "10.10.2.0/24",
-            "DefaultForAz": false,
-            "MapPublicIpOnLaunch": false,
-            "MapCustomerOwnedIpOnLaunch": false,
-            "State": "available",
-            "SubnetId": "subnet-0d2b6347dcdf29456",
-            "VpcId": "vpc-012c361d82376f53c",
-            "OwnerId": "738339644517",
-            "AssignIpv6AddressOnCreation": false,
-            "Ipv6CidrBlockAssociationSet": [],
-            "Tags": [
-                {
-                    "Key": "Name",
-                    "Value": "private"
-                }
-            ],
-            "SubnetArn": "arn:aws:ec2:eu-west-2:738339644517:subnet/subnet-0d2b6347dcdf29456",
-            "EnableDns64": false,
-            "Ipv6Native": false,
-            "PrivateDnsNameOptionsOnLaunch": {
-                "HostnameType": "ip-name",
-                "EnableResourceNameDnsARecord": false,
-                "EnableResourceNameDnsAAAARecord": false
-            }
-        }
-    ]
-}
+[
+    "10.10.2.0/24"
+]
 ```
 
 # Task 3
